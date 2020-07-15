@@ -21,5 +21,6 @@ requests==2.22.0
 six==1.15.0
 soupsieve==2.0.1
 SQLAlchemy==1.3.18
+stop-words==2018.7.23
 urllib3==1.25.9
 Werkzeug==1.0.1
