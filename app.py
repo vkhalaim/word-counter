@@ -26,7 +26,6 @@ def index():
         try:
             url = request.form['url']
             r = requests.get(url)
-            print(r.text)
         except:
             errors.append(
                 'Unable to get url. Please make sure it is valid url and try again'
@@ -40,9 +39,8 @@ def index():
             nltk.data.path.append('./nltk_data/')
             tokens = nltk.word_tokenize(raw)
             text = nltk.Text(tokens)
-
             # remove punctuations
-            non_punct = re.compile('.*[a-zA-z].*')
+            non_punct = re.compile('[a-zA-z]+')
             raw_words = [w for w in text if non_punct.match(w)]
             raw_word_count = Counter(raw_words)
 
@@ -55,7 +53,7 @@ def index():
                 no_stop_words_count.items(),
                 key=operator.itemgetter(1),
                 reverse=True
-            )
+            )[:10]
 
             try:
                 result = Result(
